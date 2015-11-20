@@ -14,7 +14,7 @@ install:
   - pip install -r requirements-test.txt
   - pip install coveralls
 
-script: py.test -s -v tests
+script: py.test -s -v tests --cov lathermail_client.py
 
 after_success:
   coveralls
