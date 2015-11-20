@@ -1,0 +1,19 @@
+language: python
+sudo: false
+
+python:
+  - "2.6"
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "pypy"
+
+install:
+  - python setup.py develop
+  - pip install -r requirements-test.txt
+  - pip install coveralls
+
+script: py.test -s -v tests
+
+after_success:
+  coveralls

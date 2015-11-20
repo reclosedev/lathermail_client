@@ -1,0 +1,11 @@
+.coverage
+*.py[co]
+.idea
+*.sqlite
+.tox
+.cache
+dist
+build
+_build
+MANIFEST
+*.egg-info/
