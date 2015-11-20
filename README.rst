@@ -1,3 +1,9 @@
+.. image:: https://travis-ci.org/reclosedev/lathermail_client.svg?branch=master
+    :target: https://travis-ci.org/reclosedev/lathermail_client
+
+.. image:: https://coveralls.io/repos/reclosedev/lathermail_client/badge.svg?branch=master&service=github
+    :target: https://coveralls.io/github/reclosedev/lathermail_client?branch=master
+
 lathermail_client
 =================
 
