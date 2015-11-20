@@ -22,7 +22,7 @@ class LathermailError(Exception):
 
 class InvalidStatus(LathermailError):
     def __init__(self, response):
-        super(LathermailError, self).__init__("Invalid status {}.\n{}".format(response.status_code, response.text))
+        super(LathermailError, self).__init__("Invalid status {0}.\n{1}".format(response.status_code, response.text))
         self.response = response
         self.code = response.status_code
 
