@@ -1,3 +1,5 @@
+import datetime
+
 import pytest
 import httmock
 
@@ -63,7 +65,7 @@ def test_messages():
         assert request.headers["X-Mail-Inbox"] == user
         last_url[0] = url
         last_request[0] = request
-        return json_response(resp)
+        return json_response(resp, 204 if request.method == "DELETE" else 200)
 
 
     with httmock.HTTMock(messages_mock):
@@ -73,6 +75,10 @@ def test_messages():
         assert "tst.tt" in last_url[0].query
         assert "recipients.address" in last_url[0].query
         assert last_request[0].method == "GET"
+
+        now = datetime.datetime.now()
+        client.get_messages(created_at_lt=now)
+        assert now.strftime("%Y-%m-%d") in last_url[0].query
 
         client.delete_messages(recipients_address="tst@tst.tt")
         assert last_request[0].method == "DELETE"
