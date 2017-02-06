@@ -44,14 +44,19 @@ class LathermailClient(object):
         return self._get("messages/{0}".format(message_id))["message_info"]
 
     def get_messages(self, recipients_address=None, recipients_name=None, subject=None,
-                     subject_contains=None, read=None,
-                     created_at_lt=None, created_at_gt=None,
-                     sender_address=None, sender_name=None):
+                     read=None, created_at_lt=None, created_at_gt=None,
+                     sender_address=None, sender_name=None,
+                     recipients_address_contains=None, recipients_name_contains=None,
+                     subject_contains=None,
+                     sender_address_contains=None, sender_name_contains=None):
         params = {
             "recipients_address": recipients_address, "recipients_name": recipients_name, "subject": subject,
             "subject_contains": subject_contains, "read": read,
             "created_at_gt": created_at_gt, "created_at_lt": created_at_lt,
-            "sender_address": sender_address, "sender_name": sender_name
+            "sender_address": sender_address, "sender_name": sender_name,
+            "recipients_address_contains": recipients_address_contains,
+            "recipients_name_contains": recipients_name_contains,
+            "sender_address_contains": sender_address_contains, "sender_name_contains": sender_name_contains,
         }
         params = _prepare_params(params)
         messages = self._get("messages/", params=params)["message_list"]
@@ -133,7 +138,11 @@ def _to_utc(dt):
 
 _params_remap = {
     "recipients_address": "recipients.address",
+    "recipients_address_contains": "recipients.address_contains",
     "recipients_name": "recipients.name",
+    "recipients_name_contains": "recipients.name_contains",
     "sender_address": "sender.address",
+    "sender_address_contains": "sender.address_contains",
     "sender_name": "sender.name",
+    "sender_name_contains": "sender.name_contains",
 }

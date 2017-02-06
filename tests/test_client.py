@@ -76,6 +76,11 @@ def test_messages():
         assert "recipients.address" in last_url[0].query
         assert last_request[0].method == "GET"
 
+        client.get_messages(recipients_address_contains="tst@tst.tt")
+        assert "tst.tt" in last_url[0].query
+        assert "recipients.address_contains" in last_url[0].query
+        assert last_request[0].method == "GET"
+
         now = datetime.datetime.now()
         client.get_messages(created_at_lt=now)
         assert now.strftime("%Y-%m-%d") in last_url[0].query
