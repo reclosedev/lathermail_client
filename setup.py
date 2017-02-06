@@ -4,7 +4,7 @@ from setuptools import setup
 setup(
     name="lathermail_client",
     url="https://github.com/reclosedev/lathermail_client/",
-    version="0.1.0",
+    version="0.2.0",
     author="Roman Haritonov",
     description="API client for lathermail SMTP Server",
     author_email="reclosedev@gmail.com",
